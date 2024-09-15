@@ -1,10 +1,9 @@
-// MovieRow.jsx
-import React, { useState, useEffect } from 'react';
-import MovieBox from './MovieBox.jsx';
-import { movieData } from '../components/MovieData.jsx';
-import { useAuth } from '../context/AuthContext';
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from '../services/firebase';
+import React, { useState, useEffect } from "react";
+import MovieBox from "./MovieBox.jsx";
+import { movieData } from "../components/MovieData.jsx";
+import { useAuth } from "../context/AuthContext";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../services/firebase";
 
 const MovieRow = () => {
   const { user } = useAuth();
@@ -15,7 +14,7 @@ const MovieRow = () => {
     const fetchLikedMovies = async () => {
       if (user) {
         try {
-          const userDoc = doc(db, 'users', user.email);
+          const userDoc = doc(db, "users", user.email);
           const docSnap = await getDoc(userDoc);
           const favShows = docSnap.data()?.favShows || [];
 
@@ -26,7 +25,7 @@ const MovieRow = () => {
 
           setLikedMovies(likedStatus);
         } catch (error) {
-          console.error('Error fetching liked movies:', error);
+          console.error("Error fetching liked movies:", error);
         }
       }
     };
@@ -50,9 +49,14 @@ const MovieRow = () => {
 
   return (
     <div className="p-4">
-      <h1 className="font-nsans-medium text-2xl md:text-4xl p-4 text-white">POPULAR</h1>
-      {/* Updated grid setup for responsive behavior */}
-      <div className="grid gap-2" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))' }}>
+      <h1 className="font-nsans-medium text-2xl md:text-4xl p-4 text-white">
+        POPULAR
+      </h1>
+
+      <div
+        className="grid gap-2"
+        style={{ gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))" }}
+      >
         {movieData.map((movie, index) => (
           <MovieBox
             key={index}

@@ -1,14 +1,14 @@
-import React from 'react'
-import Hero from '../components/Hero'
-import MovieRow from '../components/MovieRow'
+import React from "react";
+import Hero from "../components/Hero";
+import MovieRow from "../components/MovieRow";
 
 const Home = () => {
   return (
     <>
-    <Hero/>
-    <MovieRow/>
+      <Hero />
+      <MovieRow />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

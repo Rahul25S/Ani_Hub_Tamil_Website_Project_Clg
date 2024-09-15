@@ -1,16 +1,30 @@
-import React from 'react';
-import { arrayUnion, arrayRemove, doc, updateDoc, getDoc } from "firebase/firestore";
+import React from "react";
+import {
+  arrayUnion,
+  arrayRemove,
+  doc,
+  updateDoc,
+  getDoc,
+} from "firebase/firestore";
 import { db } from "../services/firebase";
-import { FaRegHeart, FaHeart } from 'react-icons/fa';
-import { useAuth } from '../context/AuthContext';
+import { FaRegHeart, FaHeart } from "react-icons/fa";
+import { useAuth } from "../context/AuthContext";
 
-const MovieBox = ({ imageSrc, label1, label2, title, isLiked, onLike, redirectLink }) => {
+const MovieBox = ({
+  imageSrc,
+  label1,
+  label2,
+  title,
+  isLiked,
+  onLike,
+  redirectLink,
+}) => {
   const { user } = useAuth();
 
   const toggleFavShow = async () => {
     if (user) {
       try {
-        const userDoc = doc(db, 'users', user.email);
+        const userDoc = doc(db, "users", user.email);
         const docSnap = await getDoc(userDoc);
         const favShowsList = docSnap.data().favShows || [];
 
@@ -23,7 +37,7 @@ const MovieBox = ({ imageSrc, label1, label2, title, isLiked, onLike, redirectLi
             favShows: arrayUnion(title),
           });
         }
-        onLike(); // Update local like status
+        onLike();
       } catch (error) {
         console.error("Error toggling favorite show: ", error);
       }
@@ -37,18 +51,26 @@ const MovieBox = ({ imageSrc, label1, label2, title, isLiked, onLike, redirectLi
   };
 
   return (
-    <div 
-      className="w-40 md:w-48 p-2 bg-gray-800 rounded-md shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+    <div
+      className="w-[270px] h-[450px] p-2 bg-gray-800 rounded-md shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
       onClick={handleBoxClick}
     >
-      <img src={imageSrc} alt={title} className="w-full h-64 object-contain rounded-md" />
+      <img
+        src={imageSrc}
+        alt={title}
+        className="w-full h-[80%] object-cover rounded-md"
+      />
       <div className="flex gap-2 mt-2">
-        <span className="px-2 py-1 text-xs text-white bg-blue-600 rounded">{label1}</span>
-        <span className="px-2 py-1 text-xs text-white bg-gray-600 rounded">{label2}</span>
+        <span className="px-2 py-1 text-xs text-white bg-blue-600 rounded">
+          {label1}
+        </span>
+        <span className="px-2 py-1 text-xs text-white bg-gray-600 rounded">
+          {label2}
+        </span>
         <span
           className="px-2 py-1 text-xs text-white bg-gray-600 rounded cursor-pointer"
           onClick={(e) => {
-            e.stopPropagation(); // Prevent triggering the redirection
+            e.stopPropagation();
             toggleFavShow();
           }}
         >

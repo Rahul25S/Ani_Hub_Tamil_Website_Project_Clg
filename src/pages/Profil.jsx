@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { FaSignOutAlt } from 'react-icons/fa';
-import { useAuth } from '../context/AuthContext';
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from '../services/firebase';
-import MovieBox from '../components/MovieBox';
-import { movieData } from '../components/MovieData';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { FaSignOutAlt } from "react-icons/fa";
+import { useAuth } from "../context/AuthContext";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../services/firebase";
+import MovieBox from "../components/MovieBox";
+import { movieData } from "../components/MovieData";
 
 const Profile = () => {
   const { user, logOut } = useAuth();
@@ -17,12 +17,12 @@ const Profile = () => {
     const fetchLikedMovies = async () => {
       if (user) {
         try {
-          const userDoc = doc(db, 'users', user.email);
+          const userDoc = doc(db, "users", user.email);
           const docSnap = await getDoc(userDoc);
           const favShows = docSnap.data()?.favShows || [];
           setLikedMovies(favShows);
         } catch (error) {
-          console.error('Error fetching liked movies:', error);
+          console.error("Error fetching liked movies:", error);
         } finally {
           setLoading(false);
         }
@@ -35,16 +35,15 @@ const Profile = () => {
   const handleLogout = async () => {
     try {
       await logOut();
-      navigate('/login');
+      navigate("/login");
     } catch (error) {
-      console.error('Failed to log out:', error);
+      console.error("Failed to log out:", error);
     }
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-800 to-gray-900 text-white pt-20">
       <nav className="w-full p-4 flex items-center justify-between fixed z-50 left-[90%] bg-gray-800">
-
         <button
           onClick={handleLogout}
           className="bg-red-500 px-4 py-2 rounded-full hover:bg-red-700 transition duration-300 shadow-lg text-sm flex items-center"
@@ -70,7 +69,10 @@ const Profile = () => {
 
                   if (!movie) {
                     return (
-                      <div key={index} className="w-full h-64 bg-gray-600 rounded-md flex items-center justify-center text-white">
+                      <div
+                        key={index}
+                        className="w-full h-64 bg-gray-600 rounded-md flex items-center justify-center text-white"
+                      >
                         <p>Image not available</p>
                       </div>
                     );
@@ -79,9 +81,9 @@ const Profile = () => {
                   return (
                     <MovieBox
                       key={index}
-                      imageSrc={movie.imageSrc || '/images/default-image.jpg'}
-                      label1={movie.label1 || 'N/A'}
-                      label2={movie.label2 || 'N/A'}
+                      imageSrc={movie.imageSrc || "/images/default-image.jpg"}
+                      label1={movie.label1 || "N/A"}
+                      label2={movie.label2 || "N/A"}
                       title={title}
                       isLiked={true}
                       onLike={() => {}}
