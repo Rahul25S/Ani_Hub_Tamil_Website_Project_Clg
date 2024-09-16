@@ -1,6 +1,50 @@
 import React from "react";
+import {
+  arrayUnion,
+  arrayRemove,
+  doc,
+  updateDoc,
+  getDoc,
+} from "firebase/firestore";
+import { db } from "../services/firebase";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
+import { useAuth } from "../context/AuthContext";
 
-const MovieBox = ({ imageSrc, label1, label2, title, redirectLink }) => {
+const MovieBox = ({
+  imageSrc,
+  label1,
+  label2,
+  title,
+  isLiked,
+  onLike,
+  redirectLink,
+}) => {
+  const { user } = useAuth();
+
+  const toggleFavShow = async () => {
+    if (user) {
+      try {
+        const userDoc = doc(db, "users", user.email);
+        const docSnap = await getDoc(userDoc);
+        const favShowsList = docSnap.data().favShows || [];
+
+        if (favShowsList.includes(title)) {
+          await updateDoc(userDoc, {
+            favShows: arrayRemove(title),
+          });
+        } else {
+          await updateDoc(userDoc, {
+            favShows: arrayUnion(title),
+          });
+        }
+        onLike();
+      } catch (error) {
+        console.error("Error toggling favorite show: ", error);
+      }
+    } else {
+      alert("Login to save anime");
+    }
+  };
 
   const handleBoxClick = () => {
     window.location.href = redirectLink;
@@ -22,6 +66,15 @@ const MovieBox = ({ imageSrc, label1, label2, title, redirectLink }) => {
         </span>
         <span className="px-2 py-1 text-xs text-white bg-gray-600 rounded">
           {label2}
+        </span>
+        <span
+          className="px-2 py-1 text-xs text-white bg-gray-600 rounded cursor-pointer"
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleFavShow();
+          }}
+        >
+          {isLiked ? <FaHeart className="text-red-500" /> : <FaRegHeart />}
         </span>
       </div>
       <h3 className="mt-2 text-sm text-white">{title}</h3>
