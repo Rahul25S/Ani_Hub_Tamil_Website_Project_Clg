@@ -19,7 +19,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
-        setNavbarBg("bg-gray-900 bg-opacity-70");
+        setNavbarBg("bg-gray-900 bg-opacity-90");
       } else {
         setNavbarBg("bg-transparent");
       }

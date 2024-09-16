@@ -3,17 +3,12 @@ import React, { useState } from "react";
 const episodes = [
   {
     id: 1,
-    title: "Full Episode 1-15",
+    title: "Episode 1-12",
     embedCode: `<iframe src="https://drive.google.com/file/d/YOUR_FULL_VIDEO_ID/preview" width="80%" height="80%" allow="autoplay; fullscreen"></iframe>`,
-  },
-  {
-    id: 2,
-    title: "Full Episode 16-30",
-    embedCode: `<iframe src="https://drive.google.com/file/d/YOUR_FULL_VIDEO_ID_2/preview" width="80%" height="80%" allow="autoplay; fullscreen"></iframe>`,
   },
 ];
 
-const FullAnimePlayer = () => {
+const TimeLoopTheVillainessEnjoys = () => {
   const [currentEpisode, setCurrentEpisode] = useState(episodes[0]);
 
   return (
@@ -47,4 +42,4 @@ const FullAnimePlayer = () => {
   );
 };
 
-export default FullAnimePlayer;
+export default TimeLoopTheVillainessEnjoys;

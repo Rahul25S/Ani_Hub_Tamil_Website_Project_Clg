@@ -1,21 +1,24 @@
-import image15 from "../assets/image15.jpg";
-import DrStone from "../assets/DrStone.jpg";
+
+import thTimeLoopTheVillainessEnjoysaCarefreeLifeMarriedtoHerWorstEnemy from "../assets/7thTimeLoopTheVillainessEnjoysaCarefreeLifeMarriedtoHerWorstEnemy.jpg";
+import StudioApartmentGoodLightingAngelIncluded from "../assets/StudioApartmentGoodLightingAngelIncluded.jpg";
 
 export const movieData = [
   {
-    id: "The-Daily-Life-of-the-Immortal-King",
-    label1: "15",
-    label2: "15",
-    imageSrc: image15,
-    title: "The Daily Life of the Immortal King",
-    redirectLink: "/The-Daily-Life-of-the-Immortal-King",
+    id: "7th-Time-Loop-The-Villainess-Enjoys-a-Carefree-Life-Married-to-Her-Worst-Enemy",
+    label1: "12",
+    label2: "12",
+    imageSrc: thTimeLoopTheVillainessEnjoysaCarefreeLifeMarriedtoHerWorstEnemy,
+    title:
+      "7th Time Loop: The Villainess Enjoys a Carefree Life Married to Her Worst Enemy",
+    redirectLink:
+      "/7th-Time-Loop-The-Villainess-Enjoys-a-Carefree-Life-Married-to-Her-Worst-Enemy",
   },
   {
-    id: "Dr-Stone",
-    label1: "4",
-    label2: "24",
-    imageSrc: DrStone,
-    title: "Dr. Stone",
-    redirectLink: "/Dr-Stone",
+    id: "Studio-Apartment-Good-Lighting-Angel-Included",
+    label1: "2",
+    label2: "12",
+    imageSrc: StudioApartmentGoodLightingAngelIncluded,
+    title: "Studio Apartment, Good Lighting, Angel Included",
+    redirectLink: "/Studio-Apartment-Good-Lighting-Angel-Included",
   },
 ];
