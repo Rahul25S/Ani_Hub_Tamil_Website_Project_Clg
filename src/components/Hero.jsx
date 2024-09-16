@@ -5,7 +5,10 @@ import image2 from "../assets/image2.jpg";
 import image3 from "../assets/image3.jpg";
 import image4 from "../assets/image4.jpg";
 import image5 from "../assets/image5.jpg";
-import { MdOutlineKeyboardArrowRight, MdOutlineKeyboardArrowLeft } from "react-icons/md";
+import {
+  MdOutlineKeyboardArrowRight,
+  MdOutlineKeyboardArrowLeft,
+} from "react-icons/md";
 
 const images = [image1, image2, image3, image4, image5];
 
@@ -74,7 +77,7 @@ const Hero = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentImage((prevImage) => (prevImage + 1) % totalImages);
-    }, 4000);
+    }, 400000);
 
     return () => clearInterval(intervalId);
   }, [totalImages]);
@@ -106,29 +109,32 @@ const Hero = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent" />
             <div className="absolute bottom-0 left-1 p-1 md:bottom-5 md:left-4 md:right-16 md:p-4 flex flex-col">
-              <h2 className="hero-title text-2xl md:text-5xl lg:text-6xl font-nsans-medium">
+              <h2 className="hero-title text-4xl md:text-5xl lg:text-6xl font-nsans-medium">
                 {imageTexts[index].title}
               </h2>
               {imageTexts[index].showExtras ? (
                 <div className="flex flex-col">
                   <div className="flex gap-1 md:gap-2 mt-0 md:mt-4">
-                    <span className="px-1 md:px-2 py-1 text-sm text-white bg-green-600 rounded">PG-13</span>
-                    <span className="px-2 py-1 text-sm text-white bg-blue-600 rounded">
+                    <span className="px-1 md:px-2 py-1 text-xs lg:text-sm text-white bg-green-600 rounded">
+                      PG-13
+                    </span>
+                    <span className="px-1 py-1 text-xs lg:text-sm text-white bg-blue-600 rounded">
                       {imageTexts[index].dynamicLabel1}
                     </span>
-                    <span className="px-2 py-1 text-sm text-white bg-gray-600 rounded">
+                    <span className="px-1 py-1 text-xs lg:text-sm text-white bg-gray-600 rounded">
                       {imageTexts[index].dynamicLabel2}
                     </span>
-                    <span className="px-2 py-1 text-sm text-white bg-purple-600 rounded">
+                    <span className="px-1 py-1 text-xs lg:text-sm text-white bg-purple-600 rounded">
                       {imageTexts[index].dynamicLabel3}
                     </span>
                   </div>
-                  <p className="mt-4 mb-4 overflow-hidden max-h-[7em] leading-tight w-[40%]">
+                  <p className="hidden lg:mt-4 lg:mb-4 lg:block overflow-hidden lg:max-h-[7em] lg:leading-tight lg:w-[40%]">
                     {imageTexts[index].description}
                   </p>
+
                   <div className="flex gap-2">
                     <button
-                      className="px-4 py-2 bg-blue-500 text-white rounded-l-full rounded-r-full hover:bg-blue-700 transition-all duration-300"
+                      className="px-2 py-1 mt-3 text-xs lg:text-base lg:px-4 lg:py-2 bg-blue-500 text-white rounded-l-full rounded-r-full hover:bg-blue-700 transition-all duration-300"
                       onClick={handleButtonClick}
                     >
                       Play Now
@@ -137,11 +143,17 @@ const Hero = () => {
                 </div>
               ) : (
                 <div className="flex flex-col w-[50%]">
-                  <span className="px-3 py-1 w-36 text-white bg-red-600 rounded mb-4">News Update</span>
-                  <p className="mt-4 mb-4 text-lg leading-relaxed">{imageTexts[index].description}</p>
+                  <span className="px-3 w-36 lg:px-3 lg:py-1 lg:w-36 text-white bg-red-600 rounded lg:mb-4">
+                    News Update
+                  </span>
+                  <p className="mt-4 mb-1 lg:mb-4 lg:text-lg text-xs w-72 lg:w-auto lg:leading-relaxed">
+                    {imageTexts[index].description}
+                  </p>
                 </div>
               )}
-              <p className="text-gray-400 mt-4">Updated on: {imageTexts[index].updateDate}</p>
+              <p className="text-gray-400 mt-4 text-xs lg:text-base ">
+                Updated on: {imageTexts[index].updateDate}
+              </p>
             </div>
           </div>
         ))}
@@ -149,13 +161,13 @@ const Hero = () => {
 
       <div className="absolute bottom-10 right-4 flex flex-col gap-2">
         <button
-          className="p-3 bg-gray-700 text-white rounded hover:bg-blue-600 hover:text-black transition-all duration-300"
+          className="lg:p-3 p-1 bg-gray-700 text-white rounded hover:bg-blue-600 hover:text-black transition-all duration-300"
           onClick={handleNextImage}
         >
           <MdOutlineKeyboardArrowRight size={20} />
         </button>
         <button
-          className="p-3 bg-gray-700 text-white rounded hover:bg-blue-600 hover:text-black transition-all duration-300"
+          className="lg:p-3 p-1 bg-gray-700 text-white rounded hover:bg-blue-600 hover:text-black transition-all duration-300"
           onClick={handlePreviousImage}
         >
           <MdOutlineKeyboardArrowLeft size={20} />

@@ -34,19 +34,19 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`w-full p-2 flex items-center justify-between fixed z-50 ${navbarBg} transition-all duration-300`}
+      className={`w-full p-1 lg:p-2 flex items-center justify-between fixed z-50 ${navbarBg} transition-all duration-300`}
     >
       <Link to="/">
         <img
           src="anihubtamil1.png"
           alt="AniHub Tamil"
-          className="h-12 sm:h-16 md:h-16"
+          className="lg:h-12 h-8"
         />
       </Link>
       {user ? (
         <div className="flex items-center">
           <Link to="/profile">
-            <button className="capitalize bg-blue-600 px-4 py-2 rounded cursor-pointer text-white text-sm sm:px-6 sm:py-2 md:mr-4">
+            <button className="capitalize bg-blue-600 px-1 py-1 lg:text-auto lg:px-4 lg:py-2 rounded cursor-pointer text-white text-sm ">
               Profile
             </button>
           </Link>
@@ -54,12 +54,12 @@ const Navbar = () => {
       ) : (
         <div className="flex items-center">
           <Link to="/login">
-            <button className="capitalize text-white pr-2 sm:pr-4 text-sm">
+            <button className="capitalize text-white text-sm lg:text-auto lg:pr-2 w-16 ">
               Login
             </button>
           </Link>
           <Link to="/signup">
-            <button className="capitalize bg-blue-600 px-4 py-2 rounded cursor-pointer text-white text-sm sm:px-6 sm:py-2">
+            <button className="capitalize bg-blue-600 lg:text-auto px-1 py-1  lg:px-4 lg:py-2 rounded cursor-pointer text-white text-sm ">
               Sign Up
             </button>
           </Link>

@@ -52,7 +52,7 @@ const MovieBox = ({
 
   return (
     <div
-      className="w-[270px] h-[450px] p-2 bg-gray-800 rounded-md shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+      className="w-[200px] h-[380px] p-1 lg:w-[270px] lg:h-[450px] lg:p-2 bg-gray-800 rounded-md shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
       onClick={handleBoxClick}
     >
       <img
@@ -61,14 +61,14 @@ const MovieBox = ({
         className="w-full h-[80%] object-cover rounded-md"
       />
       <div className="flex gap-2 mt-2">
-        <span className="px-2 py-1 text-xs text-white bg-blue-600 rounded">
+        <span className="px-2 text-sm lg:py-1 lg:text-xs text-white bg-blue-600 rounded">
           {label1}
         </span>
-        <span className="px-2 py-1 text-xs text-white bg-gray-600 rounded">
+        <span className=" text-sm px-2 lg:py-1 text-white bg-gray-600 rounded">
           {label2}
         </span>
         <span
-          className="px-2 py-1 text-xs text-white bg-gray-600 rounded cursor-pointer"
+          className="text-sm py-1 px-1 lg:py-1 text-white bg-gray-600 rounded cursor-pointer"
           onClick={(e) => {
             e.stopPropagation();
             toggleFavShow();
@@ -77,7 +77,7 @@ const MovieBox = ({
           {isLiked ? <FaHeart className="text-red-500" /> : <FaRegHeart />}
         </span>
       </div>
-      <h3 className="mt-2 text-sm text-white">{title}</h3>
+      <h3 className="mt-2 text-xs lg:text-sm text-white">{title}</h3>
     </div>
   );
 };
