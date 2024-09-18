@@ -38,7 +38,7 @@ const imageTexts = [
     dynamicLabel2: "24",
     dynamicLabel3: "MAL Score: 8.08",
     showExtras: false,
-    updateDate: "2024-09-08",
+    updateDate: "16-Sep-2024",
   },
   {
     title: "7th Time Loop",
@@ -77,7 +77,7 @@ const Hero = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentImage((prevImage) => (prevImage + 1) % totalImages);
-    }, 400000);
+    }, 4000);
 
     return () => clearInterval(intervalId);
   }, [totalImages]);

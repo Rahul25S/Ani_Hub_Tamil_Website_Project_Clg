@@ -52,7 +52,7 @@ const MovieBox = ({
 
   return (
     <div
-      className="w-[200px] h-[380px] p-1 lg:w-[270px] lg:h-[450px] lg:p-2 bg-gray-800 rounded-md shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+      className="w-[200px] h-[380px] p-1 lg:w-[270px] lg:h-[450px] lg:p-2 bg-gray-800 rounded-md shadow-lg lg:hover:scale-105 lg:transition-transform lg:duration-300 cursor-pointer"
       onClick={handleBoxClick}
     >
       <img
